@@ -1,0 +1,32 @@
+day 1
+	meal 1
+		portion of product 1
+		portion of product 2
+		portion of dish 1
+		portion of dish 2
+------------------------------------
+
+Entity [abstract]
+	1 name
+	2 description
+	3 author
+	4 creation_date
+	5 update_date
+	6 image
+	7 is_active
+	8 protein
+	9 fat
+	10 carbohydrate
+	11 ethanol
+	12 organic_acids
+	13 polyols
+	14 fibre
+	15 energy_value
+	16 components_list[portions of Product or Dish]
+	
+Product(Entity)
+	components_list = None
+	
+Dish(Entity)
+	
+Meal(Entity)

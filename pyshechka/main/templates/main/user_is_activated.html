@@ -1,0 +1,11 @@
+{% extends "layout/basic.html" %}
+
+{% block title %} Пользователь уже был активирован {% endblock %}
+
+{% block content %}
+<div class="text-center">
+	<h1>Ошибка активации</h1>
+	<p class="my-5">Активация пользователя с таким именем уже была осуществлена. Осталось лишь войти.</p>
+	<a class="btn btn-primary" href="{% url 'main:login' %}" role="button">Войти на сайт</a>
+</div>
+{% endblock %}

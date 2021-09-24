@@ -1,0 +1,36 @@
+{% extends "layout/basic.html" %}
+
+{% block title %}Продукты{% endblock %}
+
+{% block content %}
+
+<h1 class="text-center align-middle">Продукты</h1>
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th class="text-center align-middle" scope="col">
+				Наименование
+				<a type="button" class="btn btn-light" data-toggle="tooltip" data-placement="top" title="Добавить новый продукт" href="{% url 'main:product_create' %}">+</a>
+			</th>
+			<th class="text-center align-middle" scope="col">Белки, г</th>
+			<th class="text-center align-middle" scope="col">Жиры, г</th>
+			<th class="text-center align-middle" scope="col">Углеводы, г</th>
+			<th class="text-center align-middle" scope="col">Калорийность, Ккал</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for product in products %}
+			<tr onclick="document.location = '{% url 'main:product_detail' product.pk %}';" style="cursor: pointer;">
+				<td>{{ product.name }}</td>
+				<td class="text-center align-middle">{{ product.protein|floatformat }}</td>
+				<td class="text-center align-middle">{{ product.fat|floatformat }}</td>
+				<td class="text-center align-middle">{{ product.carbohydrate|floatformat }}</td>
+				<td class="text-center align-middle">{{ product.energy_value|floatformat }}</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+{% endblock %}
+
+<!-- <a class="btn btn-light" href="{% url 'main:product_delete' object.pk %}" role="button">Удалить</a> -->

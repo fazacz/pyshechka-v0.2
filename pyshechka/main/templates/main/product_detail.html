@@ -1,0 +1,42 @@
+{% extends "layout/basic.html" %}
+
+{% load bootstrap4 %}
+
+{% block title %}{{ object.name }}{% endblock %}
+
+{% block content %}
+
+<h3 class="text-center mb-4">Правка продукта</h3>
+<form method="post">
+	{% csrf_token %}
+	<!-- {% bootstrap_form form layout='horizontal' exclude='name, description' %} -->
+	{% bootstrap_field form.name layout='horizontal' %}
+	{% if portions %}
+		<p>Компоненты</p>
+		{% for p in portions %} <p>{{ p }}</p> {% endfor %}
+	{% endif %}
+	{% bootstrap_field form.protein layout='horizontal' %}
+	{% bootstrap_field form.fat layout='horizontal' %}
+	{% bootstrap_field form.carbohydrate layout='horizontal' %}
+	{% bootstrap_field form.energy_value layout='horizontal' %}
+	<div class="collapse" id="collapseExample">
+		{% bootstrap_field form.description layout='horizontal' %}
+		{% bootstrap_field form.author layout='horizontal' %}
+		{% bootstrap_field form.ethanol layout='horizontal' %}
+		{% bootstrap_field form.organic_acids layout='horizontal' %}
+		{% bootstrap_field form.polyols layout='horizontal' %}
+		{% bootstrap_field form.fibre layout='horizontal' %}
+		{% bootstrap_field form.popularity_general layout='horizontal' form_group_class='form-group row disabled' %}
+		{% bootstrap_field form.archived layout='horizontal' %}
+	</div>
+	<input type="hidden" name="next" value="{{ next }}">
+	{% buttons form_group_class='form-group text-center' %}
+	<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"> ⋮ </button>
+		<button type="reset" class="btn btn-light" > Сбросить </button>
+		<a class="btn btn-light" href="{% url 'main:product_delete' object.pk %}" role="button">Удалить</a>
+		<button type="submit" class="btn btn-primary"> Сохранить </button>
+	{% endbuttons %}
+</form>
+
+{% endblock %}
+

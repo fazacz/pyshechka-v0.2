@@ -1,0 +1,9 @@
+{% extends "layout/basic.html" %}
+
+{% block title %} Активация выполена {% endblock %}
+
+{% block content %}
+<h1 class="text-center">Активация выполена</h1>
+<p>Пользователь с таким именем успешно активирован</p>
+<p><a href="{% url 'main:login' %}">Войти на сайт</a></p>
+{% endblock %}

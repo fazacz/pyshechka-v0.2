@@ -1,0 +1,15 @@
+{% extends "layout/basic.html" %}
+
+{% load bootstrap4 %}
+
+{% block title %} Удаление продукта {% endblock %}
+
+{% block content %}
+
+<h1 class="text-center">Подтвердите даление продукта {{ object.name }}</h1>
+<form method="post">
+	{% csrf_token %}
+	{% buttons submit='Удалить' %}{% endbuttons %}
+</form>
+
+{% endblock %}
